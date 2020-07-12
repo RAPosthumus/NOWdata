@@ -16,6 +16,12 @@ data <- data %>% mutate(AV=toupper(`Naam aanvrager`))
 data <- data %>% mutate(Bedr=`Toegekend bedrag`)
 prov <- prov %>% mutate(WP=toupper(Woonplaats))
 # the now data set contains places with provinfo attached
+#add short hand for landsdeel
+prov <- prov %>% mutate(LD="")
+prov[which(prov[,7]=="Oost-Nederland"),10] <- "ON"
+prov[which(prov[,7]=="West-Nederland"),10] <- "WN"
+prov[which(prov[,7]=="Noord-Nederland"),10] <- "NN"
+prov[which(prov[,7]=="Zuid-Nederland"),10] <- "ZN"
 #cleaup prov_data
 prov[which(prov[,2]=='WP3510'),1]<-'Hengelo Ov'
 prov[which(prov[,2]=='WP3596'),1]<-'Oosterhout Nb'

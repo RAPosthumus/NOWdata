@@ -43,11 +43,11 @@ ggsave(paste("Bedrag_per_landsdeel",".png",sep=""))
 for (l in unique(data$Landsdeel)) {
   gp <-data %>% filter(Landsdeel==l) %>%  
     arrange(desc(TB)) %>% 
-    ggplot(aes(x=reorder(Gemeente_naam,TB,sum),y=TB)) +
+    ggplot(aes(x=reorder(Provincie_naam,TB,sum),y=TB)) +
     geom_bar(stat = 'identity') +
     coord_flip()+
-    ggtitle(paste("NOW-bedragen per Gemeente in landsdeel ",l,sep="")) +
-    ylab("Toegekend bedrag") + xlab("Gemeente")
+    ggtitle(paste("NOW-bedragen per provincie in landsdeel ",l,sep="")) +
+    ylab("Toegekend bedrag") + xlab("Provincie")
   gp 
   ggsave(paste(l,".png",sep=""))
 }
